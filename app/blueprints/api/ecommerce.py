@@ -17,6 +17,8 @@ def get_products():
         name=p['name'],
         price=stripe.Price.retrieve( p['metadata']['price'] )['unit_amount'],
         priceId=p['metadata']['price'],
+        type=p['statement_descriptor'],
+        category=p['unit_label']
     ) for p in stripe.Product.list()['data']])
 
 @app.route('/products/<id>')
@@ -30,6 +32,8 @@ def get_product(id):
         name=p['name'],
         price=stripe.Price.retrieve( p['metadata']['price'] )['unit_amount'],
         priceId=p['metadata']['price'],
+        type=p['statement_descriptor'],
+        category=p['unit_label']
     ))
 
 @app.route('/products/checkout', methods=['POST'])
