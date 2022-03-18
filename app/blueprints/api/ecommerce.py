@@ -64,4 +64,4 @@ def checkout():
     # [db.session.delete(item) for item in Cart.query.filter_by(user_id=current_user.id).all()]
     # db.session.commit()
 
-    return jsonify({ 'sessionURL': session.url }
+    return jsonify({ 'sessionURL': session.url })
