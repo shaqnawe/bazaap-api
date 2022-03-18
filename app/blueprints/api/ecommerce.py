@@ -53,8 +53,8 @@ def checkout():
         session = stripe.checkout.Session.create(
             line_items=items,
             mode='payment',
-            success_url=request.get_json().get('redirect') + '/shop',
-            cancel_url=request.get_json().get('redirect') + '/shop/cart',
+            success_url="http://localhost:3000/shop/products",
+            cancel_url="http://localhost:3000/shop/products",
         )
     except Exception as error:
         print(error)
@@ -64,4 +64,4 @@ def checkout():
     # [db.session.delete(item) for item in Cart.query.filter_by(user_id=current_user.id).all()]
     # db.session.commit()
 
-    return jsonify({ 'sessionURL': session.url })
+    return jsonify({ 'sessionURL': session.url }
